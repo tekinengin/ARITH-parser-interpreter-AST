@@ -4,7 +4,7 @@ block_cipher = None
 
 
 a = Analysis(['arith.py'],
-             pathex=['/Users/engintekin/Desktop/Classes/CSE-210A/cse210A-asgtest/cse210A-asgtest-hw1-arith'],
+             pathex=['/Users/engintekin/Desktop/Classes/CSE-210A/ARITH-parser'],
              binaries=[],
              datas=[],
              hiddenimports=[],

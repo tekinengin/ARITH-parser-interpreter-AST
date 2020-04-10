@@ -27,25 +27,30 @@ class Token(object):
         self.type = type
         self.value = value
         
+# Base Class for AST Data Structure
 class AST:
     pass
 
+# Operator Node Class for AST
 class Operator_Node(AST):
     def __init__(self, left, operation, right):
         self.left = left
         self.operation = operation
         self.right = right
     
+# Operand Node Class for AST
 class Operand_Node(AST):
     def __init__(self, token):
         self.value = token.value
-        
+       
+# Lexer Class in order to tokenize input 
 class Lexer(object):
     def __init__(self, text):
         self.text = text
         self.current_pos = 0
         self.current_char = text[self.current_pos]
-        
+       
+    # Mode Cursor until EOF 
     def advance(self):
         self.current_pos += 1
         
@@ -54,6 +59,7 @@ class Lexer(object):
         else:
             self.current_char = self.text[self.current_pos]
             
+    # Read whole number
     def get_int(self):
         result = ''
         while self.current_char is not None and self.current_char.isdigit():
@@ -61,12 +67,14 @@ class Lexer(object):
             self.advance()
         return int(result)
         
+    # Reads next token
     def get_next_token(self):
         while self.current_char is not None:
             if self.current_char.isspace():
                 self.advance()
                 continue
                 
+            # '-' can be before a negative number or can be a operator 
             elif self.current_char == '-':
                 self.advance()
                 if self.current_char.isspace():
